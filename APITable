@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Recursive Table Example</title>
+  <!-- Vue 2 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
+  body {
+    background-color: aliceblue;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+  }
+
+  table {
+    background-color: white;
+    border-radius: 20px;
+    border:0px;
+    box-shadow: 0px 0px 10px rgb(136, 210, 202);
+  }
+
+  table td,
+  th {
+    text-align: center;
+    vertical-align: middle;
+  }
+  table > tbody > tr:hover{
+    background-color: rgb(245, 252, 255);
+  }
+  table thead>tr{
+    background-color:#D7F6F6;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #41416a;
+  }
+  table thead>tr>th:first-child{
+    border-top-left-radius: 20px;
+  }
+  table thead>tr>th:last-child{
+    border-top-right-radius: 20px;
+  }
+  table thead>tr :first-child{
+    border: 0px;
+
+  }
+  table thead>tr :last-child{
+    border: 0px;
+  }
+  table thead>tr{
+    border-top: 0px;
+  }
+  table tbody>tr:last-child{
+    border-bottom: 0px;
+  }
+  table tbody>tr:last-child> td:last-child{
+    border: 0px;
+  }
+  table tbody>tr:last-child> td:first-child{
+    border: 0px;
+  }
+  table tbody > tr > td:first-child{
+    border-left: 0px;
+  }
+  table tbody > tr > td:last-child{
+    border-right: 0px;
+  }
+  .btn-extend{
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    background-image: url(img/plus-solid.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .btn-tap{
+    background-color: #5ECED6;
+    color: white;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div class="container mt-5">
+      <h3>eBank API查詢：</h3>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" v-model="selectedAPI">
+        <option value="default">選擇API</option>
+        <option v-for="(option, index) in APIOptions" :key="index" :value="index">{{option.api}}</option>
+      </select>
+      <div class="ms-5 mt-5" v-if="APIData.length > 0">
+        <button class="btn btn-tap">上行</button>
+        <button class="btn btn-tap">下行</button>     
+      </div>
+      <table class="table table-bordered" style="table-layout:fixed;word-break:break-all" v-if="APIData.length > 0">
+        <thead>
+          <tr>
+            <th>field</th>
+            <th>type</th>
+            <th>name</th>
+            <th>desc</th>
+            <th>regexp</th>
+            <th>message</th>
+            <th>nextListFieldData</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template v-for="item in APIData">
+            <tr :key="item.name">
+              <td>{{ item.field }}</td>
+              <td>{{ item.type }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.desc }}</td>
+              <td>{{ item.regexp }}</td>
+              <td>{{ item.message }}</td>
+              <td v-if="item.nextListFieldData.length > 0"><button class="btn-extend"
+                  @click="toggleRow()"></button>
+              </td>
+              <td v-else>無</td>
+            </tr>
+            <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && showNext">
+              <td :colspan="7">
+                <sub-table :data="item.nextListFieldData" :show-next="showNext" @toggle-row="showNext = true" />
+              </td>
+            </tr>
+          </template>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    Vue.component('sub-table', {
+      name: 'SubTable',
+      template: `
+      <table class="table table-bordered randomColor" style="table-layout:fixed;word-break:break-all">
+         <thead>
+            <tr>
+              <th>field</th>
+              <th>type</th>
+              <th>name</th>
+              <th>desc</th>
+              <th>regexp</th>
+              <th>message</th>
+              <th>nextListFieldData</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in data" :key="item.name">
+              <td>{{ item.field }}</td>
+              <td>{{ item.type }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.desc }}</td>
+              <td>{{ item.regexp }}</td>
+              <td>{{ item.message }}</td>
+              <td v-if="item.nextListFieldData.length > 0">下一層</td>
+              <td v-else>無</td>
+            </tr>
+            <tr v-for="item in data" :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && showNext">
+              <td :colspan="7">
+                <sub-table :data="item.nextListFieldData" :show-next="showNext" @toggle-row="showNext = true" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      `,
+      props: ['data', 'show-next'],
+      methods: {
+        toggleRow() {
+          this.$emit('toggleRow');
+        },
+        randomBackground(randomColorElements) {
+          // const randomColorElements = document.querySelectorAll('.randomColor');
+          // 設置淺色系顏色區間
+          const colorGroup = ["#E3F2E9", "#E9E3F2", "#F2F0E3", "#F2E3E4", "#E3F2F0", "#E3E4F2", "#E3ECF2"]
+          randomColorElements.forEach((element) => {
+            const randomColor = colorGroup[Math.floor(Math.random() * 7)];
+            element.style.backgroundColor = randomColor;
+          });
+        },
+      },
+      mounted() {
+        const randomColorElements = document.querySelectorAll('.randomColor');
+        randomColorElements.forEach((element) => {
+          element.addEventListener('mouseenter', () => {this.randomBackground(randomColorElements)});
+          element.addEventListener('mouseleave', () => {
+            // 將背景顏色重設回原來的狀態
+            element.style.backgroundColor = '';
+          });
+        });
+      }
+    });
+
+    new Vue({
+      el: '#app',
+      data: {
+        selectedAPI: "default",
+        APIOptions: [],
+        APIData: [],
+        showNext: false,
+      },
+      mounted() {
+        this.fetchAPIData();
+      },
+      methods: {
+        fetchAPIData() {
+          axios.get('api.json')
+            .then(response => {
+              this.APIOptions = response.data
+              // console.log("APIOption", this.APIOption)
+              // console.log("selectedAPI", this.selectedAPI)
+              if (this.selectedAPI !== "default") {
+                this.APIData = response.data[this.selectedAPI].listFieldData;
+              }else{
+                this.APIData = []
+              }
+              // console.log("APIData", this.APIData)
+            })
+            .catch(error => {
+              console.error(error);
+            });
+        },
+        toggleRow() {
+          this.showNext = !this.showNext;
+          const btnExtend =  document.querySelector(".btn-extend")
+          if(this.showNext == true){
+            btnExtend.style.backgroundImage ='url(img/minus-solid.svg)' 
+          }else{
+            btnExtend.style.backgroundImage ='url(img/plus-solid.svg)' 
+          }
+          // console.log(this.showNext)
+        },
+      },
+      watch: {
+        selectedAPI(newVal, oldVal) {
+          this.fetchAPIData();
+          // console.log(this.selectedOption)
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
