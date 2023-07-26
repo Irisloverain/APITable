@@ -1,192 +1,413 @@
 [
-    {
-      "api": "com.ubot.ebank.customer.function.nt.SC020102002.SC020102002IN",
-      "json": "",
-      "DateTimeCreate": "",
-      "DateTimeUpdate": "",
-      "listFieldData": [
-        {
-          "field": "testAAAPayId",
-          "type": "java.lang.String",
-          "name": "testAAA統編",
-          "desc": "testAAA交易時指定之統編",
-          "regexp": "testAAA\\w{8,9}|\\w{10,11}",
-          "message": "testAAA統編格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "testBBBPayId",
-          "type": "java.lang.String",
-          "name": "testBBB統編",
-          "desc": "testBBB交易時指定之統編",
-          "regexp": "testBBB\\w{8,9}|\\w{10,11}",
-          "message": "testBBB統編格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "data",
-          "type": "com.ubot.ebank.customer.function.nt.SC020102002.SC020102002IN$Data",
-          "name": "testCCC統編",
-          "desc": "testCCC交易時指定之統編",
-          "regexp": "",
-          "message": "",
-          "nextListFieldData": [
-            {
-              "field": "PayIdCCC111",
-              "type": "java.lang.String",
-              "name": "testCCC111統編",
-              "desc": "testCCC111交易時指定之統編",
-              "regexp": "\\w{8,9}|\\w{10,11}",
-              "message": "統編格式錯誤",
-              "nextListFieldData": []
-            },
-            {
-              "field": "PayIdCCC222",
-              "type": "java.lang.String",
-              "name": "testCCC222統編",
-              "desc": "testCCC222交易時指定之統編",
-              "regexp": "\\w{8,9}|\\w{10,11}",
-              "message": "統編格式錯誤",
-              "nextListFieldData": []
-            },
-            {
-              "field": "PayIdCCC333",
-              "type": "java.lang.String",
-              "name": "testCCC333統編",
-              "desc": "testCCC333交易時指定之統編",
-              "regexp": "\\w{8,9}|\\w{10,11}",
-              "message": "統編格式錯誤",
-              "nextListFieldData": []
-            },
-            {
-              "field": "data22",
-              "type": "com.ubot.ebank.customer.function.nt.SC020102002.SC020102002IN$Data22",
-              "name": "testCCC444統編",
-              "desc": "testCCC444交易時指定之統編",
-              "regexp": "",
-              "message": "",
-              "nextListFieldData": [
-                {
-                  "field": "PayIdCCC444111",
-                  "type": "java.lang.String",
-                  "name": "testCCC444111統編",
-                  "desc": "testCCC444111交易時指定之統編",
-                  "regexp": "\\w{8,9}|\\w{10,11}",
-                  "message": "統編格式錯誤",
-                  "nextListFieldData": []
-                },
-                {
-                  "field": "PayIdEEE444222",
-                  "type": "java.lang.String",
-                  "name": "testEEE444222統編",
-                  "desc": "testEEE444222交易時指定之統編",
-                  "regexp": "\\w{8,9}|\\w{10,11}",
-                  "message": "統編格式錯誤",
-                  "nextListFieldData": []
-                },
-                {
-                  "field": "PayIdEEE444333",
-                  "type": "java.lang.String",
-                  "name": "testEEE444333統編",
-                  "desc": "testEEE444333交易時指定之統編",
-                  "regexp": "\\w{8,9}|\\w{10,11}",
-                  "message": "統編格式錯誤",
-                  "nextListFieldData": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "field": "list",
-          "type": "java.util.ArrayList",
-          "name": "testFFF統編",
-          "desc": "testFFF交易時指定之統編",
-          "regexp": "",
-          "message": "",
-          "nextListFieldData": []
-        },
-        {
-          "field": "PayId",
-          "type": "java.lang.String",
-          "name": "testGGG統編",
-          "desc": "testGGG交易時指定之統編",
-          "regexp": "\\w{8,9}|\\w{10,11}",
-          "message": "統編格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "sAccOutID",
-          "type": "java.lang.String",
-          "name": "testHHH統編",
-          "desc": "",
-          "regexp": "[0-9]{12}",
-          "message": "轉出帳號格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "sVAccOutID",
-          "type": "java.lang.String",
-          "name": "testIII統編",
-          "desc": "",
-          "regexp": "^$|\\d{3,5}",
-          "message": "虛擬帳號格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "sSDate",
-          "type": "java.lang.String",
-          "name": "testJJJ統編",
-          "desc": "",
-          "regexp": "^([0-9]{4})/(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])$",
-          "message": "西元日期格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "sEDate",
-          "type": "java.lang.String",
-          "name": "testKKK統編",
-          "desc": "",
-          "regexp": "^([0-9]{4})/(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])$",
-          "message": "西元日期格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "sSTime",
-          "type": "java.lang.String",
-          "name": "testLLL統編",
-          "desc": "",
-          "regexp": "^$|^\\d{2}:\\d{2}:\\d{2}$",
-          "message": "時間格式錯誤",
-          "nextListFieldData": []
-        },
-        {
-          "field": "sETime",
-          "type": "java.lang.String",
-          "name": "testMMM統編",
-          "desc": "",
-          "regexp": "^$|^\\d{2}:\\d{2}:\\d{2}$",
-          "message": "時間格式錯誤",
-          "nextListFieldData": []
-        }
-      ]
-    },
-    {
-      "api": "com.ubot.ebank.customer.function.nt.SC020102001.SC020102001IN",
-      "json": "",
-      "DateTimeCreate": "",
-      "DateTimeUpdate": "",
-      "listFieldData": [
-        {
-          "field": "testCCCPayId",
-          "type": "java.lang.String",
-          "name": "testADA統編",
-          "desc": "testCCC交易時指定之統編",
-          "regexp": "testCCC\\w{8,9}|\\w{10,11}",
-          "message": "testCCC統編格式錯誤",
-          "nextListFieldData": []
-        }
-      ]
+  {
+    "api": "com.ubot.ebank.customer.function.nt.SC020102002.SC020102002OUT",
+    "listFieldData": [
+      {
+        "field": "head",
+        "type": "Object",
+        "name": "表頭",
+        "desc": "表頭資訊",
+        "regexp": "",
+        "message": "",
+        "nextListFieldData": [
+          {
+            "field": "Time",
+            "type": "String",
+            "name": "回應時間",
+            "desc": "Server回應時間",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          }
+        ]
+      },
+      {
+        "field": "flow",
+        "type": "Object",
+        "name": "流程",
+        "desc": "流程資訊",
+        "regexp": "",
+        "message": "",
+        "nextListFieldData": [
+          {
+            "field": "scm",
+            "type": "String",
+            "name": "安控等級",
+            "desc": "0:不用驗, 1:SSL, 2:OTP, 3:UBKEUY",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "status",
+            "type": "String",
+            "name": "狀態",
+            "desc": "-1:不需要跑流程, 0:需要跑流程, 1:需要跑流程，但是沒有可用流程, 2:憑證不正常",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "flow",
+            "type": "List",
+            "name": "",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": [
+              {
+                "field": "fid",
+                "type": "String",
+                "name": "flowID",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "field": "result",
+        "type": "Object",
+        "name": "",
+        "desc": "",
+        "regexp": "",
+        "message": "",
+        "nextListFieldData": [
+          {
+            "field": "PB_T19Z_DATA",
+            "type": "List",
+            "name": "1032-95 附言欄明細查詢",
+            "desc": "1032-95 附言欄明細查詢",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": [
+              {
+                "field": "PB_T19Z_FORMID",
+                "type": "String",
+                "name": "01",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "PB_T19Z_ACDATE",
+                "type": "String",
+                "name": "02",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "PB_T19Z_DATE",
+                "type": "String",
+                "name": "03",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "PB_T19Z_TIME",
+                "type": "String",
+                "name": "04",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "PB_T19Z_DB",
+                "type": "String",
+                "name": "09",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "PB_T19Z_FLAG",
+                "type": "String",
+                "name": "16",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              }
+            ]
+          },
+          {
+            "field": "CK_DATA",
+            "type": "List",
+            "name": "3069-0A 支存明細查詢",
+            "desc": "3069-0A 支存明細查詢",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": [
+              {
+                "field": "CK_FORMID",
+                "type": "String",
+                "name": "FORMID",
+                "desc": "string\tX(04)\tFORMID",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_TXDATE",
+                "type": "String",
+                "name": "交易日期",
+                "desc": "string\tX(08)\t交易日期",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_MEMO",
+                "type": "String",
+                "name": "交易摘要",
+                "desc": "string\tX(10)\t交易摘要",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_DB",
+                "type": "String",
+                "name": "借方金額(支出)",
+                "desc": "string\tX(16)\t借方金額(支出)",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_CR",
+                "type": "String",
+                "name": "貸方金額(存入)",
+                "desc": "string\tX(16)\t貸方金額(存入)",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_BAL",
+                "type": "String",
+                "name": "餘額",
+                "desc": "string\tX(17)\t餘額",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_NOTE",
+                "type": "String",
+                "name": "附言欄",
+                "desc": "string\tX(40)\t附言欄",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              }
+            ]
+          },
+          {
+            "field": "PayAccountBal",
+            "type": "String",
+            "name": "952A-01 總歸戶查詢.帳戶餘額",
+            "desc": "952A-01 總歸戶查詢.帳戶餘額",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "PayAvailableBal",
+            "type": "String",
+            "name": "952A-01 總歸戶查詢.可用餘額(放款總現欠)",
+            "desc": "952A-01 總歸戶查詢.可用餘額(放款總現欠)",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "test1",
+            "type": "Object",
+            "name": "test952A-01 總歸戶查詢.可用餘額(放款總現欠)",
+            "desc": "test952A-01 總歸戶查詢.可用餘額(放款總現欠)",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": [
+              {
+                "field": "CK_FORMID",
+                "type": "String",
+                "name": "FORMID",
+                "desc": "string\tX(04)\tFORMID",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_BILL",
+                "type": "String",
+                "name": "交易 MEMO(票號)",
+                "desc": "string\tX(08)\t交易 MEMO(票號)",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "CK_NOTE",
+                "type": "String",
+                "name": "附言欄",
+                "desc": "string\tX(40)\t附言欄",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              }
+            ]
+          },
+          {
+            "field": "test2",
+            "type": "List",
+            "name": "a",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": [
+              {
+                "field": "PB_T19Z_FORMID",
+                "type": "String",
+                "name": "b",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "PB_T19Z_BAL",
+                "type": "String",
+                "name": "l",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "PB_T19Z_NOTE",
+                "type": "String",
+                "name": "p",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              }
+            ]
+          },
+          {
+            "field": "test3",
+            "type": "Map",
+            "name": "r",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "flow",
+            "type": "Object",
+            "name": "s",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": [
+              {
+                "field": "scm",
+                "type": "String",
+                "name": "安控等級",
+                "desc": "0:不用驗, 1:SSL, 2:OTP, 3:UBKEUY",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "status",
+                "type": "String",
+                "name": "狀態",
+                "desc": "-1:不需要跑流程, 0:需要跑流程, 1:需要跑流程，但是沒有可用流程, 2:憑證不正常",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": []
+              },
+              {
+                "field": "flow",
+                "type": "List",
+                "name": "t",
+                "desc": "",
+                "regexp": "",
+                "message": "",
+                "nextListFieldData": [
+                  {
+                    "field": "fid",
+                    "type": "String",
+                    "name": "flowID",
+                    "desc": "u",
+                    "regexp": "",
+                    "message": "",
+                    "nextListFieldData": []
+                  },
+                  {
+                    "field": "fname",
+                    "type": "String",
+                    "name": "flow名稱",
+                    "desc": "",
+                    "regexp": "",
+                    "message": "",
+                    "nextListFieldData": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "field": "iii",
+            "type": "int",
+            "name": "001",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "lllog",
+            "type": "long",
+            "name": "002",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "bbbb",
+            "type": "boolean",
+            "name": "003",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          },
+          {
+            "field": "qqq",
+            "type": "Enum",
+            "name": "004",
+            "desc": "",
+            "regexp": "",
+            "message": "",
+            "nextListFieldData": []
+          }
+        ]
       }
-  ]
-  
+    ]
+  }
+]
