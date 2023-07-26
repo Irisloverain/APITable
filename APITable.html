@@ -13,6 +13,7 @@
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
+
   body {
     background-color: aliceblue;
     font-family: 'Noto Sans TC', sans-serif;
@@ -22,7 +23,7 @@
   table {
     background-color: white;
     border-radius: 20px;
-    border:0px;
+    border: 0px;
     box-shadow: 0px 0px 10px rgb(136, 210, 202);
   }
 
@@ -31,47 +32,60 @@
     text-align: center;
     vertical-align: middle;
   }
-  table > tbody > tr:hover{
+
+  table>tbody>tr:hover {
     background-color: rgb(245, 252, 255);
   }
-  table thead>tr{
-    background-color:#D7F6F6;
+
+  table thead>tr {
+    background-color: #D7F6F6;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     color: #41416a;
   }
-  table thead>tr>th:first-child{
+
+  table thead>tr>th:first-child {
     border-top-left-radius: 20px;
   }
-  table thead>tr>th:last-child{
+
+  table thead>tr>th:last-child {
     border-top-right-radius: 20px;
   }
-  table thead>tr :first-child{
+
+  table thead>tr :first-child {
     border: 0px;
 
   }
-  table thead>tr :last-child{
+
+  table thead>tr :last-child {
     border: 0px;
   }
-  table thead>tr{
+
+  table thead>tr {
     border-top: 0px;
   }
-  table tbody>tr:last-child{
+
+  table tbody>tr:last-child {
     border-bottom: 0px;
   }
-  table tbody>tr:last-child> td:last-child{
+
+  table tbody>tr:last-child>td:last-child {
     border: 0px;
   }
-  table tbody>tr:last-child> td:first-child{
+
+  table tbody>tr:last-child>td:first-child {
     border: 0px;
   }
-  table tbody > tr > td:first-child{
+
+  table tbody>tr>td:first-child {
     border-left: 0px;
   }
-  table tbody > tr > td:last-child{
+
+  table tbody>tr>td:last-child {
     border-right: 0px;
   }
-  .btn-extend{
+
+  .btn-extend {
     width: 20px;
     height: 20px;
     border: none;
@@ -80,7 +94,8 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
-  .btn-tap{
+
+  .btn-tap {
     background-color: #5ECED6;
     color: white;
     border-bottom-left-radius: 0px;
@@ -100,7 +115,7 @@
       </select>
       <div class="ms-5 mt-5" v-if="APIData.length > 0">
         <button class="btn btn-tap">上行</button>
-        <button class="btn btn-tap">下行</button>     
+        <button class="btn btn-tap">下行</button>
       </div>
       <table class="table table-bordered" style="table-layout:fixed;word-break:break-all" v-if="APIData.length > 0">
         <thead>
@@ -115,7 +130,7 @@
           </tr>
         </thead>
         <tbody>
-          <template v-for="item in APIData">
+          <template v-for="(item, index) in APIData">
             <tr :key="item.name">
               <td>{{ item.field }}</td>
               <td>{{ item.type }}</td>
@@ -124,13 +139,14 @@
               <td>{{ item.regexp }}</td>
               <td>{{ item.message }}</td>
               <td v-if="item.nextListFieldData.length > 0"><button class="btn-extend"
-                  @click="toggleRow()"></button>
+                  @click="handleClick(index, item.nextListFieldData.length)"></button>
               </td>
               <td v-else>無</td>
             </tr>
-            <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && showNext">
+            <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && showNext[index]">
               <td :colspan="7">
-                <sub-table :data="item.nextListFieldData" :show-next="showNext" @toggle-row="showNext = true" />
+                <sub-table :data="item.nextListFieldData"
+                  :shownext="createShowNextObject(item.nextListFieldData.length)" @handle-click="handleClick(index, item.nextListFieldData.length)" />
               </td>
             </tr>
           </template>
@@ -156,29 +172,37 @@
               <th>nextListFieldData</th>
             </tr>
           </thead>
-          <tbody>
-            <tr v-for="item in data" :key="item.name">
+          <tbody v-for="(item, index) in data">
+            <tr :key="item.name">
               <td>{{ item.field }}</td>
               <td>{{ item.type }}</td>
               <td>{{ item.name }}</td>
               <td>{{ item.desc }}</td>
               <td>{{ item.regexp }}</td>
               <td>{{ item.message }}</td>
-              <td v-if="item.nextListFieldData.length > 0">下一層</td>
+              <td v-if="item.nextListFieldData.length > 0"><button class="btn-extend"
+                @click="handleClick(index, item.nextListFieldData.length)""></button></td>
               <td v-else>無</td>
             </tr>
-            <tr v-for="item in data" :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && showNext">
+            <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && shownext[index]">
               <td :colspan="7">
-                <sub-table :data="item.nextListFieldData" :show-next="showNext" @toggle-row="showNext = true" />
+                <sub-table :data="item.nextListFieldData" :shownext="createShowNextObject(item.nextListFieldData.length)"  @handle-click="handleClick(index, item.nextListFieldData.length)"/>
               </td>
             </tr>
           </tbody>
         </table>
       `,
-      props: ['data', 'show-next'],
+      props: ['data', 'shownext'],
       methods: {
-        toggleRow() {
-          this.$emit('toggleRow');
+        handleClick(index, length) {
+          this.$emit('handle-click', index, length);
+        },
+        createShowNextObject(length) {
+          const showNext = {};
+          for (let i = 0; i < length; i++) {
+            showNext[i] = false;
+          }
+          return showNext;
         },
         randomBackground(randomColorElements) {
           // const randomColorElements = document.querySelectorAll('.randomColor');
@@ -193,7 +217,7 @@
       mounted() {
         const randomColorElements = document.querySelectorAll('.randomColor');
         randomColorElements.forEach((element) => {
-          element.addEventListener('mouseenter', () => {this.randomBackground(randomColorElements)});
+          element.addEventListener('mouseenter', () => { this.randomBackground(randomColorElements) });
           element.addEventListener('mouseleave', () => {
             // 將背景顏色重設回原來的狀態
             element.style.backgroundColor = '';
@@ -208,7 +232,7 @@
         selectedAPI: "default",
         APIOptions: [],
         APIData: [],
-        showNext: false,
+        showNext: [],
       },
       mounted() {
         this.fetchAPIData();
@@ -222,24 +246,37 @@
               // console.log("selectedAPI", this.selectedAPI)
               if (this.selectedAPI !== "default") {
                 this.APIData = response.data[this.selectedAPI].listFieldData;
-              }else{
+                this.showNext = new Array(this.APIData.length).fill(false);
+              } else {
                 this.APIData = []
               }
-              // console.log("APIData", this.APIData)
+              console.log("APIData", this.APIData)
+              console.log("showNext", this.showNext)
+
             })
             .catch(error => {
               console.error(error);
             });
         },
-        toggleRow() {
-          this.showNext = !this.showNext;
-          const btnExtend =  document.querySelector(".btn-extend")
-          if(this.showNext == true){
-            btnExtend.style.backgroundImage ='url(img/minus-solid.svg)' 
-          }else{
-            btnExtend.style.backgroundImage ='url(img/plus-solid.svg)' 
+        createShowNextObject(length) {
+          const showNext = {};
+          for (let i = 0; i < length; i++) {
+            showNext[i] = false;
           }
-          // console.log(this.showNext)
+          return showNext;
+        },
+        handleClick(index, length) {
+          this.toggleRow(index, length);
+          this.switchBtnStyle(index);
+        },
+        toggleRow(index, length) {
+          this.createShowNextObject(length)
+          this.$set(this.showNext, index, !this.showNext[index]);
+          console.log("showNext", this.showNext[index]);
+        },
+        switchBtnStyle(index) {
+          const btnExtends = document.querySelectorAll(".btn-extend");
+          btnExtends[index].style.backgroundImage = this.showNext[index] ? 'url(img/minus-solid.svg)' : 'url(img/plus-solid.svg)';
         },
       },
       watch: {
