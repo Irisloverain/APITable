@@ -1,6 +1,6 @@
 [
   {
-    "api": "com.ubot.ebank.customer.function.nt.SC020102002.SC020102002OUT",
+    "api": "SC020102002.SC020102002OUT",
     "listFieldData": [
       {
         "field": "head",
@@ -17,9 +17,11 @@
             "desc": "Server回應時間",
             "regexp": "",
             "message": "",
-            "nextListFieldData": []
+            "nextListFieldData": [],
+            "display": false
           }
-        ]
+        ],
+        "display": false
       },
       {
         "field": "flow",
@@ -36,7 +38,8 @@
             "desc": "0:不用驗, 1:SSL, 2:OTP, 3:UBKEUY",
             "regexp": "",
             "message": "",
-            "nextListFieldData": []
+            "nextListFieldData": [],
+            "display": false
           },
           {
             "field": "status",
@@ -45,7 +48,8 @@
             "desc": "-1:不需要跑流程, 0:需要跑流程, 1:需要跑流程，但是沒有可用流程, 2:憑證不正常",
             "regexp": "",
             "message": "",
-            "nextListFieldData": []
+            "nextListFieldData": [],
+            "display": false
           },
           {
             "field": "flow",
@@ -62,11 +66,14 @@
                 "desc": "",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               }
-            ]
+            ],
+            "display": false
           }
-        ]
+        ],
+        "display": false
       },
       {
         "field": "result",
@@ -91,7 +98,8 @@
                 "desc": "",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               },
               {
                 "field": "PB_T19Z_ACDATE",
@@ -100,7 +108,8 @@
                 "desc": "",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               },
               {
                 "field": "PB_T19Z_DATE",
@@ -109,127 +118,11 @@
                 "desc": "",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "PB_T19Z_TIME",
-                "type": "String",
-                "name": "04",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "PB_T19Z_DB",
-                "type": "String",
-                "name": "09",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "PB_T19Z_FLAG",
-                "type": "String",
-                "name": "16",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               }
-            ]
-          },
-          {
-            "field": "CK_DATA",
-            "type": "List",
-            "name": "3069-0A 支存明細查詢",
-            "desc": "3069-0A 支存明細查詢",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [
-              {
-                "field": "CK_FORMID",
-                "type": "String",
-                "name": "FORMID",
-                "desc": "string\tX(04)\tFORMID",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_TXDATE",
-                "type": "String",
-                "name": "交易日期",
-                "desc": "string\tX(08)\t交易日期",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_MEMO",
-                "type": "String",
-                "name": "交易摘要",
-                "desc": "string\tX(10)\t交易摘要",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_DB",
-                "type": "String",
-                "name": "借方金額(支出)",
-                "desc": "string\tX(16)\t借方金額(支出)",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_CR",
-                "type": "String",
-                "name": "貸方金額(存入)",
-                "desc": "string\tX(16)\t貸方金額(存入)",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_BAL",
-                "type": "String",
-                "name": "餘額",
-                "desc": "string\tX(17)\t餘額",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_NOTE",
-                "type": "String",
-                "name": "附言欄",
-                "desc": "string\tX(40)\t附言欄",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              }
-            ]
-          },
-          {
-            "field": "PayAccountBal",
-            "type": "String",
-            "name": "952A-01 總歸戶查詢.帳戶餘額",
-            "desc": "952A-01 總歸戶查詢.帳戶餘額",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": []
-          },
-          {
-            "field": "PayAvailableBal",
-            "type": "String",
-            "name": "952A-01 總歸戶查詢.可用餘額(放款總現欠)",
-            "desc": "952A-01 總歸戶查詢.可用餘額(放款總現欠)",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": []
+            ],
+            "display": false
           },
           {
             "field": "test1",
@@ -246,27 +139,11 @@
                 "desc": "string\tX(04)\tFORMID",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_BILL",
-                "type": "String",
-                "name": "交易 MEMO(票號)",
-                "desc": "string\tX(08)\t交易 MEMO(票號)",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "CK_NOTE",
-                "type": "String",
-                "name": "附言欄",
-                "desc": "string\tX(40)\t附言欄",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               }
-            ]
+            ],
+            "display": false
           },
           {
             "field": "test2",
@@ -283,7 +160,8 @@
                 "desc": "",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               },
               {
                 "field": "PB_T19Z_BAL",
@@ -292,7 +170,8 @@
                 "desc": "",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               },
               {
                 "field": "PB_T19Z_NOTE",
@@ -301,18 +180,11 @@
                 "desc": "",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               }
-            ]
-          },
-          {
-            "field": "test3",
-            "type": "Map",
-            "name": "r",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": []
+            ],
+            "display": false
           },
           {
             "field": "flow",
@@ -329,16 +201,8 @@
                 "desc": "0:不用驗, 1:SSL, 2:OTP, 3:UBKEUY",
                 "regexp": "",
                 "message": "",
-                "nextListFieldData": []
-              },
-              {
-                "field": "status",
-                "type": "String",
-                "name": "狀態",
-                "desc": "-1:不需要跑流程, 0:需要跑流程, 1:需要跑流程，但是沒有可用流程, 2:憑證不正常",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": []
+                "nextListFieldData": [],
+                "display": false
               },
               {
                 "field": "flow",
@@ -355,7 +219,8 @@
                     "desc": "u",
                     "regexp": "",
                     "message": "",
-                    "nextListFieldData": []
+                    "nextListFieldData": [],
+                    "display": false
                   },
                   {
                     "field": "fname",
@@ -364,49 +229,17 @@
                     "desc": "",
                     "regexp": "",
                     "message": "",
-                    "nextListFieldData": []
+                    "nextListFieldData": [],
+                    "display": false
                   }
-                ]
+                ],
+                "display": false
               }
-            ]
-          },
-          {
-            "field": "iii",
-            "type": "int",
-            "name": "001",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": []
-          },
-          {
-            "field": "lllog",
-            "type": "long",
-            "name": "002",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": []
-          },
-          {
-            "field": "bbbb",
-            "type": "boolean",
-            "name": "003",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": []
-          },
-          {
-            "field": "qqq",
-            "type": "Enum",
-            "name": "004",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": []
+            ],
+            "display": false
           }
-        ]
+        ],
+        "display": false
       }
     ]
   }
