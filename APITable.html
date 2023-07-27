@@ -2,164 +2,70 @@
 <html>
 
 <head>
-  <title>Recursive Table Example</title>
-  <!-- Vue 2 -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <!-- Axios -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Recursive Table Example</title>
+    <!-- Vue 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+     <!-- CSS -->
+     <link href="tableStyle.css" rel="stylesheet"></script>
 </head>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap');
-
-  body {
-    background-color: aliceblue;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-weight: 300;
-  }
-
-  table {
-    background-color: white;
-    border-radius: 20px;
-    border: 0px;
-    box-shadow: 0px 0px 10px rgb(136, 210, 202);
-  }
-
-  table td,
-  th {
-    text-align: center;
-    vertical-align: middle;
-  }
-
-  table>tbody>tr:hover {
-    background-color: rgb(245, 252, 255);
-  }
-
-  table thead>tr {
-    background-color: #D7F6F6;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    color: #41416a;
-  }
-
-  table thead>tr>th:first-child {
-    border-top-left-radius: 20px;
-  }
-
-  table thead>tr>th:last-child {
-    border-top-right-radius: 20px;
-  }
-
-  table thead>tr :first-child {
-    border: 0px;
-
-  }
-
-  table thead>tr :last-child {
-    border: 0px;
-  }
-
-  table thead>tr {
-    border-top: 0px;
-  }
-
-  table tbody>tr:last-child {
-    border-bottom: 0px;
-  }
-
-  table tbody>tr:last-child>td:last-child {
-    border: 0px;
-  }
-
-  table tbody>tr:last-child>td:first-child {
-    border: 0px;
-  }
-
-  table tbody>tr>td:first-child {
-    border-left: 0px;
-  }
-
-  table tbody>tr>td:last-child {
-    border-right: 0px;
-  }
-
-  .btn-extend {
-    width: 20px;
-    height: 20px;
-    border: none;
-    background-color: transparent;
-    background-image: url(img/plus-solid.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-
-  .btn-tap {
-    background-color: #5ECED6;
-    color: white;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-</style>
-
 <body>
-  <div id="app">
-    <div class="container mt-5">
-      <h3>eBank API查詢：</h3>
-      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" v-model="selectedAPI">
-        <option value="default">選擇API</option>
-        <option v-for="(option, index) in APIOptions" :key="index" :value="index">{{option.api}}</option>
-      </select>
-      <div class="ms-5 mt-5" v-if="APIData.length > 0">
-        <button class="btn btn-tap">上行</button>
-        <button class="btn btn-tap">下行</button>
-      </div>
-      <table class="table table-bordered" style="table-layout:fixed;word-break:break-all" v-if="APIData.length > 0">
-        <thead>
-          <tr>
-            <th>field</th>
-            <th>type</th>
-            <th>name</th>
-            <th>desc</th>
-            <th>regexp</th>
-            <th>message</th>
-            <th>nextListFieldData</th>
-          </tr>
-        </thead>
-        <tbody>
-          <template v-for="(item, index) in APIData">
-            <tr :key="item.name">
-              <td>{{ item.field }}</td>
-              <td>{{ item.type }}</td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.desc }}</td>
-              <td>{{ item.regexp }}</td>
-              <td>{{ item.message }}</td>
-              <td v-if="item.nextListFieldData.length > 0"><button class="btn-extend"
-                  @click="handleClick(index, item.nextListFieldData.length)"></button>
-              </td>
-              <td v-else>無</td>
-            </tr>
-            <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && showNext[index]">
-              <td :colspan="7">
-                <sub-table :data="item.nextListFieldData"
-                  :shownext="createShowNextObject(item.nextListFieldData.length)" @handle-click="handleClick(index, item.nextListFieldData.length)" />
-              </td>
-            </tr>
-          </template>
-
-        </tbody>
-      </table>
+    <div id="app">
+        <div class="container mt-5">
+            <h3>eBank API22222查詢：</h3>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" v-model="selectedAPI">
+                <option value="default">選擇API</option>
+                <option v-for="(option, index) in APIOptions" :key="index" :value="index">{{option.api}}</option>
+            </select>
+            <div class="ms-5 mt-5" v-if="APIData.length > 0">
+                <button class="btn btn-tap">上行</button>
+                <button class="btn btn-tap">下行</button>
+            </div>
+            <table class="table table-bordered" style="table-layout:fixed;word-break:break-all"
+                v-if="APIData.length > 0">
+                <thead>
+                    <tr>
+                        <th>field</th>
+                        <th>type</th>
+                        <th>name</th>
+                        <th>desc</th>
+                        <th>regexp</th>
+                        <th>message</th>
+                        <th>nextListFieldData</th>
+                    </tr>
+                </thead>
+                <tbody v-for="(item, index) in APIData">
+                    <tr :key="item.name">
+                        <td>{{ item.field }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.desc }}</td>
+                        <td>{{ item.regexp }}</td>
+                        <td>{{ item.message }}</td>
+                        <td v-if="item.nextListFieldData.length > 0">
+                            <button class="btn-extend" @click="handleClick(index)"></button>
+                        </td>
+                        <td v-else>無</td>
+                    </tr>
+                    <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && displayState[index]">
+                        <td :colspan="7">
+                            <sub-table :data="item.nextListFieldData" :display-state="displayState"
+                                @handle-click="handleClick(index)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 
-  <script>
-    Vue.component('sub-table', {
-      name: 'SubTable',
-      template: `
+    <script>
+        Vue.component('sub-table', {
+            name: 'SubTable',
+            template: `
       <table class="table table-bordered randomColor" style="table-layout:fixed;word-break:break-all">
          <thead>
             <tr>
@@ -174,119 +80,101 @@
           </thead>
           <tbody v-for="(item, index) in data">
             <tr :key="item.name">
-              <td>{{ item.field }}</td>
-              <td>{{ item.type }}</td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.desc }}</td>
-              <td>{{ item.regexp }}</td>
-              <td>{{ item.message }}</td>
-              <td v-if="item.nextListFieldData.length > 0"><button class="btn-extend"
-                @click="handleClick(index, item.nextListFieldData.length)""></button></td>
+                <td>{{ item.field }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.desc }}</td>
+                <td>{{ item.regexp }}</td>
+                <td>{{ item.message }}</td>
+                <td v-if="item.nextListFieldData.length > 0">
+                <button class="btn-extend" @click="handleClick(index)"></button>
+              </td>
               <td v-else>無</td>
             </tr>
-            <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && shownext[index]">
+            <tr :key="item.name + '-subtable'" v-if="item.nextListFieldData.length > 0 && displayState[index]">
               <td :colspan="7">
-                <sub-table :data="item.nextListFieldData" :shownext="createShowNextObject(item.nextListFieldData.length)"  @handle-click="handleClick(index, item.nextListFieldData.length)"/>
+                <sub-table :data="item.nextListFieldData" :display-state="displayState" @handle-click="handleClick(index)" />
               </td>
             </tr>
           </tbody>
         </table>
       `,
-      props: ['data', 'shownext'],
-      methods: {
-        handleClick(index, length) {
-          this.$emit('handle-click', index, length);
-        },
-        createShowNextObject(length) {
-          const showNext = {};
-          for (let i = 0; i < length; i++) {
-            showNext[i] = false;
-          }
-          return showNext;
-        },
-        randomBackground(randomColorElements) {
-          // const randomColorElements = document.querySelectorAll('.randomColor');
-          // 設置淺色系顏色區間
-          const colorGroup = ["#E3F2E9", "#E9E3F2", "#F2F0E3", "#F2E3E4", "#E3F2F0", "#E3E4F2", "#E3ECF2"]
-          randomColorElements.forEach((element) => {
-            const randomColor = colorGroup[Math.floor(Math.random() * 7)];
-            element.style.backgroundColor = randomColor;
-          });
-        },
-      },
-      mounted() {
-        const randomColorElements = document.querySelectorAll('.randomColor');
-        randomColorElements.forEach((element) => {
-          element.addEventListener('mouseenter', () => { this.randomBackground(randomColorElements) });
-          element.addEventListener('mouseleave', () => {
-            // 將背景顏色重設回原來的狀態
-            element.style.backgroundColor = '';
-          });
+            props: ['data', 'display-state'],
+            methods: {
+                handleClick(index) {
+                    this.$emit('handle-click', index);
+                },
+                randomBackground(randomColorElements) {
+                    // 設置淺色系顏色區間
+                    const colorGroup = ["#E3F2E9", "#E9E3F2", "#F2F0E3", "#F2E3E4", "#E3F2F0", "#E3E4F2", "#E3ECF2"]
+                    randomColorElements.forEach((element) => {
+                        const randomColor = colorGroup[Math.floor(Math.random() * 7)];
+                        element.style.backgroundColor = randomColor;
+                    });
+                },
+            },
+            mounted() {
+                const randomColorElements = document.querySelectorAll('.randomColor');
+                randomColorElements.forEach((element) => {
+                    element.addEventListener('mouseenter', () => { this.randomBackground(randomColorElements) });
+                    element.addEventListener('mouseleave', () => {
+                        // 將背景顏色重設回原來的狀態
+                        element.style.backgroundColor = '';
+                    });
+                });
+            }
         });
-      }
-    });
 
-    new Vue({
-      el: '#app',
-      data: {
-        selectedAPI: "default",
-        APIOptions: [],
-        APIData: [],
-        showNext: [],
-      },
-      mounted() {
-        this.fetchAPIData();
-      },
-      methods: {
-        fetchAPIData() {
-          axios.get('api.json')
-            .then(response => {
-              this.APIOptions = response.data
-              // console.log("APIOption", this.APIOption)
-              // console.log("selectedAPI", this.selectedAPI)
-              if (this.selectedAPI !== "default") {
-                this.APIData = response.data[this.selectedAPI].listFieldData;
-                this.showNext = new Array(this.APIData.length).fill(false);
-              } else {
-                this.APIData = []
-              }
-              console.log("APIData", this.APIData)
-              console.log("showNext", this.showNext)
-
-            })
-            .catch(error => {
-              console.error(error);
-            });
-        },
-        createShowNextObject(length) {
-          const showNext = {};
-          for (let i = 0; i < length; i++) {
-            showNext[i] = false;
-          }
-          return showNext;
-        },
-        handleClick(index, length) {
-          this.toggleRow(index, length);
-          this.switchBtnStyle(index);
-        },
-        toggleRow(index, length) {
-          this.createShowNextObject(length)
-          this.$set(this.showNext, index, !this.showNext[index]);
-          console.log("showNext", this.showNext[index]);
-        },
-        switchBtnStyle(index) {
-          const btnExtends = document.querySelectorAll(".btn-extend");
-          btnExtends[index].style.backgroundImage = this.showNext[index] ? 'url(img/minus-solid.svg)' : 'url(img/plus-solid.svg)';
-        },
-      },
-      watch: {
-        selectedAPI(newVal, oldVal) {
-          this.fetchAPIData();
-          // console.log(this.selectedOption)
-        }
-      }
-    });
-  </script>
+        new Vue({
+            el: '#app',
+            data: {
+                selectedAPI: "default",
+                APIOptions: [],
+                APIData: [],
+                displayState: {},
+            },
+            mounted() {
+                this.fetchAPIData();
+            },
+            watch: {
+                selectedAPI(newVal, oldVal) {
+                    this.fetchAPIData();
+                    // console.log(this.selectedOption)
+                }
+            },
+            methods: {
+                fetchAPIData() {
+                    axios.get('api.json')
+                        .then(response => {
+                            this.APIOptions = response.data;
+                            if (this.selectedAPI !== "default") {
+                                this.APIData = response.data[this.selectedAPI].listFieldData;
+                                this.initializeDisplayState(this.APIData);
+                            } else {
+                                this.APIData = [];
+                                this.displayState = {};
+                            }
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                },
+                initializeDisplayState(data) {
+                    this.displayState = {};
+                    data.forEach((item, index) => {
+                        this.$set(this.displayState, index, false);
+                        if (item.nextListFieldData.length > 0) {
+                            this.initializeDisplayState(item.nextListFieldData);
+                        }
+                    });
+                    console.log("this.displayState", this.displayState)
+                },
+                handleClick(index) {
+                    this.$set(this.displayState, index, !this.displayState[index]);
+                },
+            },
+        });
+    </script>
 </body>
 
 </html>
