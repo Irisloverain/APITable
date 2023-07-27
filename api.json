@@ -1,246 +1,88 @@
 [
-  {
-    "api": "SC020102002.SC020102002OUT",
-    "listFieldData": [
-      {
-        "field": "head",
-        "type": "Object",
-        "name": "表頭",
-        "desc": "表頭資訊",
-        "regexp": "",
-        "message": "",
-        "nextListFieldData": [
-          {
-            "field": "Time",
-            "type": "String",
-            "name": "回應時間",
-            "desc": "Server回應時間",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [],
-            "display": false
-          }
-        ],
-        "display": false
-      },
-      {
-        "field": "flow",
-        "type": "Object",
-        "name": "流程",
-        "desc": "流程資訊",
-        "regexp": "",
-        "message": "",
-        "nextListFieldData": [
-          {
-            "field": "scm",
-            "type": "String",
-            "name": "安控等級",
-            "desc": "0:不用驗, 1:SSL, 2:OTP, 3:UBKEUY",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [],
-            "display": false
-          },
-          {
-            "field": "status",
-            "type": "String",
-            "name": "狀態",
-            "desc": "-1:不需要跑流程, 0:需要跑流程, 1:需要跑流程，但是沒有可用流程, 2:憑證不正常",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [],
-            "display": false
-          },
-          {
-            "field": "flow",
-            "type": "List",
-            "name": "",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [
-              {
-                "field": "fid",
-                "type": "String",
-                "name": "flowID",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              }
-            ],
-            "display": false
-          }
-        ],
-        "display": false
-      },
-      {
-        "field": "result",
-        "type": "Object",
-        "name": "",
-        "desc": "",
-        "regexp": "",
-        "message": "",
-        "nextListFieldData": [
-          {
-            "field": "PB_T19Z_DATA",
-            "type": "List",
-            "name": "1032-95 附言欄明細查詢",
-            "desc": "1032-95 附言欄明細查詢",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [
-              {
-                "field": "PB_T19Z_FORMID",
-                "type": "String",
-                "name": "01",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              },
-              {
-                "field": "PB_T19Z_ACDATE",
-                "type": "String",
-                "name": "02",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              },
-              {
-                "field": "PB_T19Z_DATE",
-                "type": "String",
-                "name": "03",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              }
-            ],
-            "display": false
-          },
-          {
-            "field": "test1",
-            "type": "Object",
-            "name": "test952A-01 總歸戶查詢.可用餘額(放款總現欠)",
-            "desc": "test952A-01 總歸戶查詢.可用餘額(放款總現欠)",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [
-              {
-                "field": "CK_FORMID",
-                "type": "String",
-                "name": "FORMID",
-                "desc": "string\tX(04)\tFORMID",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              }
-            ],
-            "display": false
-          },
-          {
-            "field": "test2",
-            "type": "List",
-            "name": "a",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [
-              {
-                "field": "PB_T19Z_FORMID",
-                "type": "String",
-                "name": "b",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              },
-              {
-                "field": "PB_T19Z_BAL",
-                "type": "String",
-                "name": "l",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              },
-              {
-                "field": "PB_T19Z_NOTE",
-                "type": "String",
-                "name": "p",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              }
-            ],
-            "display": false
-          },
-          {
-            "field": "flow",
-            "type": "Object",
-            "name": "s",
-            "desc": "",
-            "regexp": "",
-            "message": "",
-            "nextListFieldData": [
-              {
-                "field": "scm",
-                "type": "String",
-                "name": "安控等級",
-                "desc": "0:不用驗, 1:SSL, 2:OTP, 3:UBKEUY",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [],
-                "display": false
-              },
-              {
-                "field": "flow",
-                "type": "List",
-                "name": "t",
-                "desc": "",
-                "regexp": "",
-                "message": "",
-                "nextListFieldData": [
-                  {
-                    "field": "fid",
-                    "type": "String",
-                    "name": "flowID",
-                    "desc": "u",
-                    "regexp": "",
-                    "message": "",
-                    "nextListFieldData": [],
-                    "display": false
-                  },
-                  {
-                    "field": "fname",
-                    "type": "String",
-                    "name": "flow名稱",
-                    "desc": "",
-                    "regexp": "",
-                    "message": "",
-                    "nextListFieldData": [],
-                    "display": false
-                  }
-                ],
-                "display": false
-              }
-            ],
-            "display": false
-          }
-        ],
-        "display": false
-      }
-    ]
-  }
+    {
+        "api": "1",
+        "List": [
+            {
+                "id": "1",
+                "name": "Parent 1",
+                "display": false,
+                "subTable": [
+                    {
+                        "id": "11",
+                        "name": "Child 1.1",
+                        "display": false,
+                        "subTable": [
+                            {
+                                "id": "111",
+                                "name": "Child 1.1.1",
+                                "display": false,
+                                "subTable": []
+                            },
+                            {
+                                "id": "112",
+                                "name": "Child 1.1.2",
+                                "display": false,
+                                "subTable": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "12",
+                        "name": "Child 1.1.2",
+                        "display": false,
+                        "subTable": [
+                            {
+                                "id": "122",
+                                "name": "Child 1.2.2",
+                                "display": false,
+                                "subTable": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "name": "Parent 2",
+                "display": false,
+                "subTable": [
+                    {
+                        "id": "21",
+                        "name": "Child 2.1",
+                        "display": false,
+                        "subTable": []
+                    }
+                ]
+            },
+            {
+                "id": "3",
+                "name": "Parent 3",
+                "display": false,
+                "subTable": []
+            }
+        ]
+    },
+    {
+        "api": "2",
+        "List": [
+            {
+                "id": "1",
+                "name": "Parent 1",
+                "display": false,
+                "subTable": [
+                    {
+                        "id": "11",
+                        "name": "Child 1.1",
+                        "subTable": []
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "name": "Parent 2",
+                "display": false,
+                "subTable": []
+            }
+        ]
+    }
 ]
